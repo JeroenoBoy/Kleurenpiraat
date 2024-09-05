@@ -1,0 +1,19 @@
+{
+    "name": "kleurenpiraat",
+    "version": "1.0.0",
+    "description": "Infection game voor intro-opdracht HU",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/JeroenoBoy/Kleurenpiraat.git"
+    },
+    "author": "Groepje 7",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/JeroenoBoy/Kleurenpiraat/issues"
+    },
+    "homepage": "https://github.com/JeroenoBoy/Kleurenpiraat#readme"
+}
