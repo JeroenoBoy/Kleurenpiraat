@@ -20,7 +20,7 @@ module.exports = function createWSServer(server) {
 
         let connection = req.accept("dingus", req.origin)
         connection.on("message", (message) => {
-            console.log(message);
+            console.log(message.utf8Data);
             if (message.utf8Data == "Hello!") {
                 connection.send(`Hi! ${name}, you are on team ${color}`);
             }
