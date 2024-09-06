@@ -8,11 +8,21 @@ module.exports = function createWSServer(server) {
     })
 
     wsServer.on("request", (req) => {
+
+        const dataCookie = req.cookies.find(it => it.name == "data");
+        if (dataCookie == null) {
+            req.reject(401, "No data cookie")
+            return
+        }
+
+        const name = dataCookie.value.split(":")[0]
+        const color = dataCookie.value.split(":")[1]
+
         let connection = req.accept("dingus", req.origin)
         connection.on("message", (message) => {
             console.log(message);
             if (message.utf8Data == "Hello!") {
-                connection.send("Hi!");
+                connection.send(`Hi! ${name}, you are on team ${color}`);
             }
         })
         connection.on("close", (code, description) => {
