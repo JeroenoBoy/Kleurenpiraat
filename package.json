@@ -4,6 +4,7 @@
     "description": "Infection game voor intro-opdracht HU",
     "main": "src/index.js",
     "scripts": {
+        "dev": "nodemon .",
         "start": "node ."
     },
     "repository": {
@@ -15,5 +16,11 @@
     "bugs": {
         "url": "https://github.com/JeroenoBoy/Kleurenpiraat/issues"
     },
-    "homepage": "https://github.com/JeroenoBoy/Kleurenpiraat#readme"
+    "homepage": "https://github.com/JeroenoBoy/Kleurenpiraat#readme",
+    "dependencies": {
+        "express": "^4.19.2"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.4"
+    }
 }
