@@ -1,1 +1,6 @@
-
+html, body {
+  min-height: 100dvh;
+  min-width: 100dvw;
+  max-width: 100dvw;
+  margin: 0;
+}
