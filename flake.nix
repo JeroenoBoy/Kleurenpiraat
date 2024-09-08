@@ -17,6 +17,7 @@
         ];
 
         shellHook = ''
+          npm install
           echo ""
           echo "Node : `node --version`"
           echo "Npm : `npm --version`"
