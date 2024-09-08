@@ -27,7 +27,6 @@ module.exports = class WSConnection {
             if (split.length != 2) return
             const eventName = split[0]
             const eventValue = split[1]
-            console.log(`[${new Date().toDateString()}] Reveiced '${msg.utf8Data}'`)
             this.callbacks[eventName]?.forEach((cb) => cb(eventValue))
         })
 
