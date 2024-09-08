@@ -1,5 +1,5 @@
 const express = require("express")
-const createWSServer = require("./websocket.js");
+const createWSServer = require("./WSServer.js");
 
 const port = 3000;
 const app = express()
