@@ -40,8 +40,3 @@ class WSConnection {
         this.wsConnection.send(msg)
     }
 }
-
-try {
-    module.exports = WSConnection
-} catch (e) {
-}
