@@ -1,7 +1,8 @@
+require("dotenv").config()
 const express = require("express")
 const createWSServer = require("./WSServer.js");
 
-const port = 3000;
+const port = parseInt(process.env.PORT ?? "3000");
 const app = express()
 
 app.use(express.static("public"));

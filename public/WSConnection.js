@@ -34,6 +34,7 @@ class WSConnection {
 
     /** @param {string} name @param {string} value */
     send(name, value) {
+        value ??= ""
         if (name.indexOf(":") > 0) throw new Error("name cannot contain ':'")
         if (value.indexOf(":") > 0) throw new Error("value cannot contain ':'")
         const msg = `${name}:${value}`
