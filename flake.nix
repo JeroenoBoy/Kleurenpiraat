@@ -12,8 +12,9 @@
     in {
       devShell = pkgs.mkShell {
         name = "Kleurenpiraat shell";
-        buildInputs = [
-          pkgs.nodejs_22
+        buildInputs = with pkgs; [
+          nodejs_22
+          android-tools
         ];
 
         shellHook = ''

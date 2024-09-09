@@ -21,13 +21,14 @@ window.onload = () => {
         connection.send("hello");
     })
 
-    try {
-        const barcodeDetector = new BarcodeDetector({
-            formats: ["qr_code"],
-        });
-        console.log(barcodeDetector)
-    } catch (e) {
-        alert("No barcode detector detected")
-    }
+    const qrScanner = new QRScanner(
+        document.getElementById("qr-view"),
+        result => console.log(`qr code result: ${result.data}`),
+        {
+            highlightScanRegion: true
+        }
+    );
+
+    qrScanner.start()
 }
 
