@@ -21,7 +21,8 @@ router.post("/", (req, res) => {
 
             //creates new user
             let newUser = {
-                         name: req.body.username,
+                id: Date.now(),
+                name: req.body.username,
                 colour: GetRandomColour()
             }
             users.push(newUser);
