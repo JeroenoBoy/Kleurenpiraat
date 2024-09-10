@@ -1,14 +1,12 @@
 const ws = require("websocket")
 
 module.exports = class WSConnection {
-
-    /** @type {number} @readonly */
-    id
+    /** @type {nummer} @readonly */
+    id 
     /** @type {string} @readonly */
     name
     /** @type {string} @readonly */
     color
-
 
     /** @private @type {{ [key: string]: ((msg: string) => void)[] }} */
     callbacks
