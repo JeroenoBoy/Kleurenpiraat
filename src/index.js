@@ -19,13 +19,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }))
 app.use(sessionParser);
 
-const colourData = ["red", "blue", "yellow", "green"]
-function GetRandomColour() {
-    return colourData[Math.floor(Math.random() * colourData.length)];
-}
-
 app.use("/give-cookie", giveCookiesRouter)
-app.use("/", qrScannedRouter)
+app.use("/qr-code", qrScannedRouter)
 
 app.get("/api", (req, res) => {
     res.status(200).send("Hello World!");
