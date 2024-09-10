@@ -1,18 +1,18 @@
-const WSConnection = require("../WSConnection")
 const qrcode = require("qrcode")
+const config = require("../config")
 
 const router = require("express").Router()
 const wsServer = require("..").wsServer
 
 router.get("/", (req, res) => {
-    console.log(req.baseUrl)
     if (req.session.authenticated) {
         res.status(403).send("You are not logged in");
         return
     }
 
+    console.log(req.session)
     const id = req.session.user.id
-    qrcode.toBuffer(req.baseUrl)
+    res.status(200).send(qrcode.toBuffer(`${config.baseUrl}/u/${id}}`))
 })
 
 router.post("/", (req, res) => {

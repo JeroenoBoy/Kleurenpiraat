@@ -1,11 +1,7 @@
-require("dotenv").config()
+const config = require("./config.js")
 const express = require("express")
 const createWSServer = require("./WSServer.js");
-const giveCookiesRouter = require("./routes/give-cookie.js");
-const qrScannedRouter = require("./routes/qr-scanned.js")
 
-const users = require('./userDatabase').userDatabase;
-const port = parseInt(process.env.PORT ?? "3000");
 const app = express()
 
 const sessionParser = require("express-session")({
@@ -19,15 +15,11 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }))
 app.use(sessionParser);
 
-app.use("/give-cookie", giveCookiesRouter)
-app.use("/qr-code", qrScannedRouter)
+app.use("/give-cookie", require("./routes/give-cookie.js"))
+app.use("/qr-code", require("./routes/qr-code.js"))
 
-app.get("/api", (req, res) => {
-    res.status(200).send("Hello World!");
-})
-
-const server = app.listen(port, () => {
-    console.log(`🌈 Kleurenpiraat is actief op poort ${port} 🚀`)
+const server = app.listen(config.port, () => {
+    console.log(`🌈 Kleurenpiraat is actief op poort ${config.port} 🚀`)
 })
 
 module.exports.wsServer = createWSServer(server, sessionParser)
