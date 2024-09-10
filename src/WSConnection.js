@@ -1,7 +1,7 @@
 const ws = require("websocket")
 
 module.exports = class WSConnection {
-    /** @type {nummer} @readonly */
+    /** @type {number} @readonly */
     id 
     /** @type {string} @readonly */
     name
@@ -17,9 +17,10 @@ module.exports = class WSConnection {
       * @param {string} name
       * @param {string} color
       */
-    constructor(wsConnection, name, color) {
+    constructor(wsConnection, name, color, id) {
         this.wsConnection = wsConnection;
         this.callbacks = {};
+        this.id = id
         this.color = color;
         this.name = name;
 

@@ -28,7 +28,7 @@ router.post("/", (req, res) => {
             //pushes cookie to end-user
             req.session.authenticated = true; 
             req.session.user = newUser;
-            res.status(200).send("Success");
+            res.redirect('back');
         } else {
             res.status(403).send("This username already exists!");
         }

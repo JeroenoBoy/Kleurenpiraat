@@ -36,11 +36,12 @@ class WSServer {
                 return
             }
 
+            const id = testCookie.id;
             const name = testCookie.name;
             const color = testCookie.colour;
             let connection = request.accept("dingus", request.origin)
             console.log(`[${new Date().toDateString()}] New incomming connection`)
-            this.connections.push(new WSConnection(connection, name, color))
+            this.connections.push(new WSConnection(connection, name, color, id))
         })
     }
 }
