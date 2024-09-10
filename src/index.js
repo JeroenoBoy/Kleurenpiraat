@@ -30,7 +30,9 @@ app.get("/give-cookie", (req, res) => {
 
 app.post("/give-cookie", (req, res) => {
     try {
-        if (req.body.username) { 
+        if (!req.body.username) {
+            return
+        } 
             let checkForUser = users.find((data) => req.body.username === users.name);
             if (req.session.authenticated) { 
                 res.status(403).send("User already has an account");
@@ -50,7 +52,6 @@ app.post("/give-cookie", (req, res) => {
             } else {
                 res.status(403).send("This username already exists!");
             }
-        }
     } catch(e) { 
         console.log(e);
     }
