@@ -2,6 +2,7 @@ require("dotenv").config()
 const express = require("express")
 const session = require("express-session")
 const createWSServer = require("./WSServer.js");
+const qrScannedRouter = require("./routes/qr-scanned.js")
 
 const users = require('./userDatabase').userDatabase;
 const port = parseInt(process.env.PORT ?? "3000");
@@ -20,6 +21,7 @@ function GetRandomColour() {
     return colours[Math.floor(Math.random() * colours.length)];
 }
 
+app.use("/", qrScannedRouter)
 
 app.get("/api", (req, res) => {
     res.status(200).send("Hello World!");
