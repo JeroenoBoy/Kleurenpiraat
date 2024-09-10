@@ -4,3 +4,12 @@ html, body {
   max-width: 100dvw;
   margin: 0;
 }
+
+.AppMain {
+  
+}
+
+#qrScanner {
+  max-width: 300px;
+  max-height: 300px;
+}
