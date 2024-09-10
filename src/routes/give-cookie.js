@@ -9,8 +9,10 @@ function GetRandomColour() {
 
 router.post("/", (req, res) => {
     try {
-        if (req.body.username == null) {
-            res.status(403).send("No username");
+        console.log(req.body.username)
+        if (req.body.username == null || req.body.username.length < 3) {
+            res.redirect('back');
+            return;
         }
         let checkForUser = users.find((data) => req.body.username === users.name);
         if (req.session.authenticated) {
@@ -19,8 +21,7 @@ router.post("/", (req, res) => {
 
             //creates new user
             let newUser = {
-                id: Date.now(),
-                name: req.body.username,
+                         name: req.body.username,
                 colour: GetRandomColour()
             }
             users.push(newUser);

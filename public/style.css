@@ -1,15 +1,51 @@
-html, body {
-  min-height: 100dvh;
-  min-width: 100dvw;
-  max-width: 100dvw;
-  margin: 0;
+body{
+  background-color: #575;
+  text-align: center;
 }
 
-.AppMain {
+h1  {
+  color:rgb(255, 255, 255);
+  font-size:70px;
+}
+h2  {
+  color:rgb(255, 255, 255);    
+}
+h3  {
+  color:rgb(255, 255, 255);
+}
+
+footer  {
+  color:rgb(255, 255, 255);
+  text-align: right;
+}
+p   {
+  font-family: verdana;
+  font-size: 20px;
+}
+
+img{width: 250px;height: 150px;}
+
+a.achtergrond:link, a.achtergrond:visited {
+  background-color: #ed6056;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
   
 }
 
-#qrScanner {
-  max-width: 300px;
-  max-height: 300px;
+a.achtergrond:hover, a.achtergrond:active {
+  background-color: red;
+}
+a.contact:link, a.contact:visited, a.contact:hover, a.contact:active {
+  color: white;
+}
+
+.square {
+height: 256px;
+width: 256px;
+background-color: #ffffff;
+margin-left: auto;
+margin-right: auto
 }

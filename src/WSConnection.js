@@ -22,7 +22,7 @@ module.exports = class WSConnection {
         this.callbacks = {};
         this.id = id
         this.color = color;
-        this.name = name;
+        this.name = name; 
 
         wsConnection.on("message", (msg) => {
             if (msg.type != "utf8") return

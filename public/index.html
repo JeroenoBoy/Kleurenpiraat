@@ -2,20 +2,52 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kleurenpiraat</title>
     <link rel="stylesheet" href="style.css">
     <script src="/WSConnection.js"></script>
     <script src="/QRScanner.js"></script>
     <script src="/index.js"></script>
 </head>
-
 <body>
-    Tijd om te kleuren
-    <div>Welkom ....</div>
+    <header>
+        <h1>
+            <img src="Kleurenpiraat.png">
+            <br>Welkom!
+            <br>Tijd om te Kleuren!
+        </h1>
+        <h2>
+            <form action="/give-cookie" method="POST">
+                <fieldset>
+                    <label>Enter Username</label>
+                    <input type="text" id='username' name='username' placeholder="voer hier je naam in"/>
+                    <br>
+        
+                    <button type="submit">Submit</button>
+                </fieldset>
+            </form>
+            <br>Jij bent de kleur
+            <br>{kleur} <!--Link etc toevoegen-->
+        </h2>
+        <h3>
+            <a href="scanner.html" target="_self" class="achtergrond">Scanner</a> <!--Link toevoegen-->
+            <br>
+            <br>
+            
+            <div class="square"></div>
+        </h3>
+    </header>
+    <footer>
+        <a href="https://bit.ly/3Za0U22" target="_blank" class="contact">Contact Ons</a>
+    </footer>
+    <div id="grad1"></div>
+</body>
+
+<!--<body>
 <div class="AppMain"></div>
     <a href="/scanner.html"><button>Scan QR code</button></a>
 
-    je bent nu kleur: 
     <form action="/give-cookie" method="POST">
         <fieldset>
             <label>Enter Username</label>
@@ -27,6 +59,6 @@
     </form>
 
     <video id="qr-view"></video>
-</body>
+</body>-->
 
 </html>
