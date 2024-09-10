@@ -3,6 +3,7 @@ const express = require("express")
 const session = require("express-session")
 const createWSServer = require("./WSServer.js");
 
+const users = require('./userDatabase').userDatabase;
 const port = parseInt(process.env.PORT ?? "3000");
 const app = express()
 
@@ -30,21 +31,24 @@ app.get("/give-cookie", (req, res) => {
 app.post("/give-cookie", (req, res) => {
     try {
         if (req.body.username) { 
+            let checkForUser = users.find((data) => req.body.username === users.name);
             if (req.session.authenticated) { 
                 res.status(403).send("User already has an account");
-            } else { 
+            } else if (!checkForUser) { 
 
                 //creates new user
                 let newUser = { 
                     name: req.body.username,
                     colour: GetRandomColour()
                 }
-
+                users.push(newUser);
 
                 //pushes cookie to end-user
                 req.session.authenticated = true; 
                 req.session.user = newUser;
                 res.status(200).send("Success");
+            } else {
+                res.status(403).send("This username already exists!");
             }
         }
     } catch(e) { 
