@@ -13,7 +13,6 @@ window.onload = () => {
     connection.on("color-change", (msg) => {
         const element = document.querySelector("body")
         element.style["background-color"] = colormap[msg]
-        console.log("color-map")
     })
 
     socket.addEventListener("open", e => {
@@ -21,14 +20,5 @@ window.onload = () => {
         connection.send("hello");
     })
 
-    const qrScanner = new QRScanner(
-        document.getElementById("qr-view"),
-        result => console.log(`qr code result: ${result.data}`),
-        {
-            highlightScanRegion: true
-        }
-    );
-
-    qrScanner.start()
 }
 
