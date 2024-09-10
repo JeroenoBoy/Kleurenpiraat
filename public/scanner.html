@@ -7,13 +7,25 @@
     <script src="/WSConnection.js"></script>
     <script src="/QRScanner.js"></script>
     <script src="/index.js"></script>
+
+    <script>
+        window.onload = () => {
+            const qrScanner = new QRScanner(document.getElementById("qr-view"), result => console.log(`qr code result: ${result.data}`),
+                {
+                    highlightScanRegion: true
+                }
+            );
+
+            qrScanner.start()
+        }
+    </script>
 </head>
 
 <body>
-  Scan the qr code
-  <div id="qrScanner">
-    <video id="qr-view"></video>
-  </div>
+    Scan the qr code
+    <div id="qrScanner">
+        <video id="qr-view"></video>
+    </div>
 </body>
 
 </html>

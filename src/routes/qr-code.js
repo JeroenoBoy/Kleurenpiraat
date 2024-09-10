@@ -4,15 +4,19 @@ const config = require("../config")
 const router = require("express").Router()
 const wsServer = require("..").wsServer
 
-router.get("/", (req, res) => {
-    if (req.session.authenticated) {
+router.get("/", async (req, res) => {
+    if (!req.session.authenticated) {
         res.status(403).send("You are not logged in");
         return
     }
 
-    console.log(req.session)
+    if (req.query.lol == "true") {
+        res.status(200).send(await qrcode.toBuffer(`https://boulderbugle.com/kleurenpiraat-IhamkRYN`))
+        return
+    }
+
     const id = req.session.user.id
-    res.status(200).send(qrcode.toBuffer(`${config.baseUrl}/u/${id}}`))
+    res.status(200).send(await qrcode.toBuffer(`${config.baseUrl}/u/${id}`))
 })
 
 router.post("/", (req, res) => {
