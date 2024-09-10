@@ -13,6 +13,9 @@ window.onload = () => {
     connection.on("color-change", (msg) => {
         const element = document.querySelector("body")
         element.style["background-color"] = colormap[msg]
+
+        const text = document.getElementById("kleur-text")
+        text.innerHTML = msg
     })
 
     socket.addEventListener("open", e => {
