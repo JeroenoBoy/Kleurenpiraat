@@ -23,22 +23,23 @@ class WSServer {
             return
         }
 
-        const dataCookie = request.cookies.find(it => it.name == "data");
-        if (dataCookie == null) {
+        //const dataCookie = request.cookies.find(it => it.name == "data");
+        const testCookie = request.session.user;
+        if (testCookie == null) {
             console.log(`[${new Date().toDateString()}] Rejected connection with no cookie`)
             request.reject(401, "No data cookie")
             return
         }
 
-        const split = dataCookie.value.split(":")
+        /*const split = dataCookie.value.split(":")
         if (split.length != 2) {
             console.log(`[${new Date().toDateString()}] Rejected connection with invalid cookie`)
             request.reject(400, "Invalid cookie");
             return
-        }
+        } */
 
-        const name = split[0]
-        const color = split[1]
+        const name = testCookie.name;
+        const color = testCookie.colour; 
         let connection = request.accept("dingus", request.origin)
         console.log(`[${new Date().toDateString()}] New incomming connection`)
         this.connections.push(new WSConnection(connection, name, color))
