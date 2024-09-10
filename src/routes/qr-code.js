@@ -4,7 +4,7 @@ const qrcode = require("qrcode")
 const router = require("express").Router()
 const wsServer = require("..").wsServer
 
-router.get("/qr-code", (req, res) => {
+router.get("/", (req, res) => {
     console.log(req.baseUrl)
     if (req.session.authenticated) {
         res.status(403).send("You are not logged in");
@@ -15,7 +15,7 @@ router.get("/qr-code", (req, res) => {
     qrcode.toBuffer(req.baseUrl)
 })
 
-router.post("/qr-code", (req, res) => {
+router.post("/", (req, res) => {
     if (!req.session.authenticated) {
         res.status(403).send("You are not logged in");
         return
