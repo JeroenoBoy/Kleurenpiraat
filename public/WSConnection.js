@@ -11,12 +11,12 @@ class WSConnection {
         this.callbacks = {};
 
         wsConnection.addEventListener("message", (msg) => {
+            console.log(msg.data)
             if (typeof (msg.data) != "string") return
             const split = msg.data.split(":");
-            if (split.length != 2) return
-            const eventName = split.pop()
+            if (split.length < 2) return
+            const eventName = split.shift()
             const eventValue = split.join(":")
-            console.log(`[${new Date().toDateString()}] Reveiced`, msg.data)
             this.callbacks[eventName]?.forEach((cb) => cb(eventValue))
         })
     }
