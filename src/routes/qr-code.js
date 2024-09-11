@@ -37,7 +37,6 @@ router.post("/", (req, res) => {
         return
     }
 
-    console.log(connection.id)
     connection.send("qr-code-scanned", JSON.stringify({
         id: myId,
         colour: colour,

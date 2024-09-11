@@ -44,7 +44,6 @@ const Questions = [
 ]
 function myQuestion() {
     const randomElement = Questions[Math.floor(Math.random() * Questions.length)];
-    console.log(randomElement);
     return randomElement;
 }
 module.exports = { myQuestion };
