@@ -1,0 +1,21 @@
+module.exports = [
+"Wat is je favoriete feestdag van het jaar?",
+"Wat is de 1 van de eerste herinneringen die je hebt?",
+"Wat is je leuktste herinneringen aan de basisschool?,"
+"Wat is de leukste herinneringen van de middelbare?",
+"Wat wilde je worden toen je heel jong was?",
+"Wat is nog een land dat je wil bezoeken?",
+"wat is je favoriete dier en waarom?",
+"Hoe ziet je ideale vakantie eruit?",
+"Wat is nog een geheim talent dat je hebt?",
+"Welke sport deed je toen je klein was?",
+"Welke sport/en doe je nu?",
+"Wat is het eerste dat je doet als je thuis komt?",
+"Hoe zag je kinderfeesje er vroeger uit?",
+"Wie is de zon in jouw leven?",
+"Wat is je meest bizarre trein verhaal?",
+"Wat is het domste wat je ooit hebt gedaan?",
+"Wie is je celebrity crush",
+"",
+",
+]
