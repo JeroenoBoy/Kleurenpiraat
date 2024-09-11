@@ -3,6 +3,7 @@ const config = require("../config")
 
 const router = require("express").Router()
 const index = require("..")
+const { myQuestion } = require("../Vragen")
 
 router.get("/", async (req, res) => {
     if (!req.session.authenticated) {
@@ -28,6 +29,7 @@ router.post("/", (req, res) => {
     const scannedqrcode = req.body.code
     const myId = req.session.user.id
     const colour = req.session.user.colour
+    const question = myQuestion()
 
     const connection = index.wsServer.connections.find(it => it.id == scannedqrcode)
     if (connection == null) {
@@ -38,12 +40,12 @@ router.post("/", (req, res) => {
     connection.send("qr-code-scanned", JSON.stringify({
         id: myId,
         colour: colour,
-        question: "Wie is de zon in jouwn dag?"
+        question: question  
     }))
 
     res.status(200).send({
         id: myId,
-        question: "Wie is de zon in jouwn dag?"
+        question: question
     })
 })
 

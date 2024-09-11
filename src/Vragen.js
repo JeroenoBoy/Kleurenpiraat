@@ -1,4 +1,4 @@
-module.exports = [
+const Questions = [
 "Wat is je favoriete feestdag van het jaar?",
 "Wat is de 1 van de eerste herinneringen die je hebt?",
 "Wat is je leuktste herinnering aan de basisschool?",
@@ -15,7 +15,7 @@ module.exports = [
 "Wie is de zon in jouw leven?",
 "Wat is je meest bizarre trein verhaal?",
 "Wat is het domste wat je ooit hebt gedaan?",
-"Wie is je celebrity crush",
+"Wie is je celebrity crush?",
 "Ben je meer een moederskind of vadersmoederskind",
 "Heb je een huisdier?",
 "Wat staat er bovenaan je bucketlist?",
@@ -24,7 +24,7 @@ module.exports = [
 "Wat is je droom auto/huis?",
 "Hoe zou je jezelf in één zin omschrijven?",
 "Wat is jouw spaardoel?",
-"Welke superkracht zou jij willen hebben",
+"Welke superkracht zou jij willen hebben?",
 "Wat is je meest dierbare herinnering?",
 "Wat is je lievelingsnummer?",
 "Met wat zou je niet kunnen overleven?",
@@ -42,3 +42,10 @@ module.exports = [
 "Wat is iets dat je hebt gedaan en nog steeds spijt van hebt?",
 "Hoe lang zou jij zonder sociale media kunnen?",
 ]
+function myQuestion() {
+    const randomElement = Questions[Math.floor(Math.random() * Questions.length)];
+    console.log(randomElement);  
+    return randomElement;
+}
+module.exports = {myQuestion};
+
