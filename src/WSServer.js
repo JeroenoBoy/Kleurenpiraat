@@ -42,6 +42,11 @@ class WSServer {
             let connection = request.accept("dingus", request.origin)
             console.log(`[${new Date().toDateString()}] New incomming connection`)
             this.connections.push(new WSConnection(connection, name, color, id))
+
+            connection.on("close", (data) => {
+                console.log(`[${new Date().toDateString()}] Closed connection with ${name}`)
+                this.connections = this.connections.filter(it => it.id != id)
+            })
         })
     }
 }

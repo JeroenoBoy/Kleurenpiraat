@@ -1,4 +1,5 @@
 const ws = require("websocket")
+const { wsServer } = require(".")
 
 module.exports = class WSConnection {
     /** @type {number} @readonly */
