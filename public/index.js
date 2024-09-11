@@ -27,7 +27,10 @@ window.onload = () => {
 
     connection.on("qr-code-scanned", msg => {
         const data = JSON.parse(msg)
-        location.href = `/u/${data.id}`
+        const params = new URLSearchParams()
+        params.set("colour", data.colour)
+        params.set("question", data.question)
+        location.href = `/questions.html?${params.toString()}`
     })
 
     socket.addEventListener("open", e => {

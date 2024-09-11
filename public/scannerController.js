@@ -33,7 +33,9 @@ function handleScanResult(result, qrScanner) {
             }
 
             const body = await res.json()
-            location.href = `/u/${body.id}`
+            const params = new URLSearchParams()
+            params.set("question", body.question)
+            location.href = `/questions.html?${params.toString()}`
         })
         .catch(e => {
             console.log(`Error while request for user ${id}`, e)
