@@ -16,7 +16,25 @@ function handleScanResult(result, qrScanner) {
     const split = result.split("/")
     const id = parseInt(split[split.length - 1])
 
-    console.log(id)
-
     qrScanner.stop()
+
+    fetch("/qr-code", {
+        method: "POST",
+        body: { code: id }
+    })
+        .then(async res => {
+            if (res.status >= 400) {
+                console.log(`Error ${res.status} -- '${await res.text()}'`)
+                qrScanner.start()
+                return
+            }
+
+            const body = await res.body()
+            location.href = `/u/${body.id}`
+        })
+        .catch(e => {
+            console.log(`Error while request for user ${id}`, e)
+            qrScanner.start()
+        })
+
 }

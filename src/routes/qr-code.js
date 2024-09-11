@@ -34,7 +34,9 @@ router.post("/", (req, res) => {
     }
 
     connection.send("qr-code-scanned", `${myId}`)
-    res.status(200).send("Succes!")
+    res.status(200).send({
+        id: myId
+    })
 })
 
 module.exports = router
