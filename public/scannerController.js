@@ -20,7 +20,10 @@ function handleScanResult(result, qrScanner) {
 
     fetch("/qr-code", {
         method: "POST",
-        body: { code: id }
+        body: JSON.stringify({ code: id }),
+        headers: {
+            "content-type": "application/json"
+        }
     })
         .then(async res => {
             if (res.status >= 400) {
@@ -29,7 +32,7 @@ function handleScanResult(result, qrScanner) {
                 return
             }
 
-            const body = await res.body()
+            const body = await res.json()
             location.href = `/u/${body.id}`
         })
         .catch(e => {

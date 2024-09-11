@@ -2,7 +2,7 @@ const ws = require("websocket")
 
 module.exports = class WSConnection {
     /** @type {number} @readonly */
-    id 
+    id
     /** @type {string} @readonly */
     name
     /** @type {string} @readonly */
@@ -22,7 +22,7 @@ module.exports = class WSConnection {
         this.callbacks = {};
         this.id = id
         this.color = color;
-        this.name = name; 
+        this.name = name;
 
         wsConnection.on("message", (msg) => {
             if (msg.type != "utf8") return
@@ -50,7 +50,6 @@ module.exports = class WSConnection {
     /** @param {string} name @param {string} value */
     send(name, value) {
         if (name.indexOf(":") > 0) throw new Error("name cannot contain ':'")
-        if (value.indexOf(":") > 0) throw new Error("value cannot contain ':'")
         const msg = `${name}:${value}`
         this.wsConnection.send(msg)
     }

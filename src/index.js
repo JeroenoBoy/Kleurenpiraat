@@ -12,7 +12,7 @@ const sessionParser = require("express-session")({
 })
 
 app.use(sessionParser);
-app.get(/(\/$)|(\..*\.html$)/i, (req, res, next) => {
+app.get(/(\/$)|(\/.*\.html$)/i, (req, res, next) => {
     if (req.session.authenticated) {
         next()
     } else if (req.url.toLowerCase().endsWith("login.html")) {
@@ -23,6 +23,7 @@ app.get(/(\/$)|(\..*\.html$)/i, (req, res, next) => {
 })
 
 app.use(express.static("public"));
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 
 app.use("/give-cookie", require("./routes/give-cookie.js"))

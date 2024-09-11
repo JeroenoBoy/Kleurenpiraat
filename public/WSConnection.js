@@ -14,8 +14,8 @@ class WSConnection {
             if (typeof (msg.data) != "string") return
             const split = msg.data.split(":");
             if (split.length != 2) return
-            const eventName = split[0]
-            const eventValue = split[1]
+            const eventName = split.pop()
+            const eventValue = split.join(":")
             console.log(`[${new Date().toDateString()}] Reveiced`, msg.data)
             this.callbacks[eventName]?.forEach((cb) => cb(eventValue))
         })

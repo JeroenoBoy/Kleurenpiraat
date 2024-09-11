@@ -2,7 +2,7 @@ const qrcode = require("qrcode")
 const config = require("../config")
 
 const router = require("express").Router()
-const wsServer = require("..").wsServer
+const index = require("..")
 
 router.get("/", async (req, res) => {
     if (!req.session.authenticated) {
@@ -24,11 +24,12 @@ router.post("/", (req, res) => {
         res.status(403).send("You are not logged in");
         return
     }
+
     const scannedqrcode = req.body.code
     const myId = req.session.user.id
     const colour = req.session.user.colour
 
-    const connection = wsServer.connections.find(it => it.id == scannedqrcode)
+    const connection = index.wsServer.connections.find(it => it.id == scannedqrcode)
     if (connection == null) {
         res.status(400).send("User not found!")
         return
