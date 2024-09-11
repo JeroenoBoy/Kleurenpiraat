@@ -7,7 +7,7 @@ window.onload = () => {
         "red": "#cc5555",
         "yellow": "#FFDB58",
         "blue": "#6495ED",
-        "green": "##65E67A",
+        "green": "#65E67A",
     }
 
     const colornaam = {
