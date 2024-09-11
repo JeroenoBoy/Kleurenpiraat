@@ -34,7 +34,6 @@ router.post("/", (req, res) => {
     }
 
     connection.send("qr-code-scanned", `${myId}`)
-
     res.status(200).send("Succes!")
 })
 
