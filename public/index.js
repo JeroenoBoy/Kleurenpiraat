@@ -5,9 +5,9 @@ window.onload = () => {
 
     const colormap = {
         "red": "#cc5555",
-        "yellow": "#cccc55",
-        "blue": "#5555cc",
-        "green": "#55cc55",
+        "yellow": "#FFDB58",
+        "blue": "#6495ED",
+        "green": "##65E67A",
     }
 
     const colornaam = {
