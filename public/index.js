@@ -28,8 +28,9 @@ window.onload = () => {
 
     connection.on("qr-code-scanned", msg => {
         const data = JSON.parse(msg)
+        location.href = `/u/${data.id}` 
     })
-
+    
     socket.addEventListener("open", e => {
         console.log(`Opened socket to`, e.target.url)
         connection.send("hello");
