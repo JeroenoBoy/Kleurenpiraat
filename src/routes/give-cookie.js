@@ -30,7 +30,9 @@ router.post("/", (req, res) => {
             //pushes cookie to end-user
             req.session.authenticated = true;
             req.session.user = newUser;
-            res.redirect('back');
+            
+            console.log("created cookie");
+            res.sendFile(path.join(__dirname, '../game.html'));
         } else {
             res.status(403).send("This username already exists!");
         }
