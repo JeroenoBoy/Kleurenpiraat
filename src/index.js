@@ -18,6 +18,7 @@ app.use(sessionParser);
 app.use("/give-cookie", require("./routes/give-cookie.js"))
 app.use("/qr-code", require("./routes/qr-code.js"))
 
+
 const server = app.listen(config.port, () => {
     console.log(`🌈 Kleurenpiraat is actief op poort ${config.port} 🚀`)
 })
