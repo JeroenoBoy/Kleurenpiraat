@@ -11,9 +11,19 @@ const sessionParser = require("express-session")({
     cookie: { maxage: 3000000 }
 })
 
+app.use(sessionParser);
+app.get(/(\/$)|(\..*\.html$)/i, (req, res, next) => {
+    if (req.session.authenticated) {
+        next()
+    } else if (req.url.toLowerCase().endsWith("login.html")) {
+        next()
+    } else {
+        res.redirect("/login.html")
+    }
+})
+
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }))
-app.use(sessionParser);
 
 app.use("/give-cookie", require("./routes/give-cookie.js"))
 app.use("/qr-code", require("./routes/qr-code.js"))

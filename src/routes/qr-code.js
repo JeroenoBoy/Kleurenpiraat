@@ -26,6 +26,7 @@ router.post("/", (req, res) => {
     }
     const scannedqrcode = req.body.code
     const myId = req.session.user.id
+    const colour = req.session.user.colour
 
     const connection = wsServer.connections.find(it => it.id == scannedqrcode)
     if (connection == null) {
@@ -33,9 +34,15 @@ router.post("/", (req, res) => {
         return
     }
 
-    connection.send("qr-code-scanned", `${myId}`)
+    connection.send("qr-code-scanned", JSON.stringify({
+        id: myId,
+        colour: colour,
+        question: "Wie is de zon in jouwn dag?"
+    }))
+
     res.status(200).send({
-        id: myId
+        id: myId,
+        question: "Wie is de zon in jouwn dag?"
     })
 })
 
