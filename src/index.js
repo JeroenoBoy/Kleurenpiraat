@@ -29,6 +29,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use("/give-cookie", require("./routes/give-cookie.js"))
 app.use("/qr-code", require("./routes/qr-code.js"))
 app.use("/change-colour", require("./routes/change-colour.js"))
+app.use("/u", require("./routes/return-user.js"))
 
 
 const server = app.listen(config.port, () => {
