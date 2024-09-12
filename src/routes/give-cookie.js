@@ -9,7 +9,6 @@ function GetRandomColour() {
 
 router.post("/", (req, res) => {
     try {
-        console.log(req.body.username)
         if (req.body.username == null || req.body.username.length < 3) {
             res.redirect('back');
             return;
