@@ -12,7 +12,7 @@ window.onload = () => {
     let starTime = Date.now();
     const futureTime = starTime + setTime;
 
-    const colourmap = { 
+    const colourMap = { 
         "red": "#cc5555",
         "yellow": "#FFDB58",
         "blue": "#6495ED",
