@@ -4,11 +4,17 @@ const config = require("../config")
 const router = require("express").Router()
 const index = require("..")
 const { myQuestion } = require("../Vragen")
+const { request } = require("express")
 
 router.get("/", async (req, res) => {
+    if (req.query.id!=null) {
+        res.status(200).send(await qrcode.toBuffer(`${config.baseUrl}/u/${req.query.id}`)) 
+        return
+    }
+
     if (!req.session.authenticated) {
         res.status(403).send("You are not logged in");
-        return
+        return        
     }
 
     if (req.query.lol == "true") {
