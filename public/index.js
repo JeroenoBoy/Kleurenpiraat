@@ -1,4 +1,4 @@
-window.onload = () => {
+window.addEventListener("load", () => {
     const socket = new WebSocket("/", "dingus");
 
     const connection = new WSConnection(socket)
@@ -40,5 +40,4 @@ window.onload = () => {
         console.log(`Opened socket to`, e.target.url)
         connection.send("hello");
     })
-}
-
+})
