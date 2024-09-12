@@ -9,7 +9,6 @@ window.onload = () => {
 
     const setTime = seconds;
     let starTime = Date.now();
-    const futureTime = starTime + setTime;
 
     const colourMap = {
         "red": "#cc5555",
@@ -30,11 +29,11 @@ window.onload = () => {
         color2 = colourMap[url.searchParams.get("to")].slice(1);
     }
 
-    if (url.searchParams.has("colour")) {
+    if (url.searchParams.has("to")) {
         fetch("/change-colour", {
             method: "POST",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify({ colour: url.searchParams.get("colour") })
+            body: JSON.stringify({ colour: url.searchParams.get("to") })
         })
     }
 
@@ -46,6 +45,7 @@ window.onload = () => {
         document.getElementById("question").innerHTML = url.searchParams.get("question")
     }
 
+    const futureTime = starTime + setTime;
     const timerLoop = setInterval(countDownTimer, 100);
     countDownTimer();
 
@@ -58,7 +58,7 @@ window.onload = () => {
         element.style["background-color"] = `#${mixHex(color1, color2, remainingTimePrecentage)}`;
 
         // timer
-        const secs = Math.floor((remainingTime / (1000))).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
+        const secs = Math.min(Math.floor((remainingTime / (1000))), sec).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
 
         timer.innerHTML = `<div>${secs}</div>`;
 
