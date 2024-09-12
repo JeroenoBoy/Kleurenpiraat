@@ -13,12 +13,15 @@ const sessionParser = require("express-session")({
 
 app.use(sessionParser);
 app.get(/(\/$)|(\/.*\.html$)/i, (req, res, next) => {
-    if (req.session.authenticated) {
-        next()
-    } else if (req.url.toLowerCase().endsWith("login.html")) {
-        next()
-    } else {
+    const isLoginPage = req.url.toLowerCase().endsWith("login.html")
+    const isAuthenticated = req.session.authenticated
+
+    if (isAuthenticated && isLoginPage) {
+        res.redirect("/")
+    } else if (!isAuthenticated && !isLoginPage) {
         res.redirect("/login.html")
+    } else {
+        next()
     }
 })
 
