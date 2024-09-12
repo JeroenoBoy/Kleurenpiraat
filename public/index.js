@@ -30,7 +30,9 @@ window.onload = () => {
         const params = new URLSearchParams()
         params.set("colour", data.colour)
         params.set("question", data.question)
+        params.set("timetostart", data.timetostart)
         location.href = `/questions.html?${params.toString()}`
+    
     })
 
     socket.addEventListener("open", e => {

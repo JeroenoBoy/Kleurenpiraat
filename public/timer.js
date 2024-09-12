@@ -9,7 +9,7 @@ window.onload = () => {
     const seconds = sec * 1000;
 
     const setTime = seconds;
-    const starTime = Date.now();
+    let starTime = Date.now();
     const futureTime = starTime + setTime;
 
     const colourmap = { 
@@ -69,6 +69,10 @@ window.onload = () => {
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ colour: url.searchParams.get("colour") })
         })
+    }
+
+    if (url.searchParams.has("timetostart")) {
+        starTime = parseInt(url.searchParams.get("timetostart"));
     }
 
     if (url.searchParams.has("question")) {
