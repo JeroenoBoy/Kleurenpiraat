@@ -36,6 +36,7 @@ function handleScanResult(result, qrScanner) {
             const params = new URLSearchParams()
             params.set("question", body.question)
             params.set("timetostart", body.timetostart)
+            params.set("from", body.colour)
             location.href = `/questions.html?${params.toString()}`
         })
         .catch(e => {

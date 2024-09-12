@@ -29,7 +29,7 @@ router.post("/", (req, res) => {
     const scannedqrcode = req.body.code
     const myId = req.session.user.id
     const colour = req.session.user.colour
-    const timetostart = Date.now() + 1000 
+    const timetostart = Date.now() + 1000
     const question = myQuestion()
 
     const connection = index.wsServer.connections.find(it => it.id == scannedqrcode)
@@ -40,13 +40,15 @@ router.post("/", (req, res) => {
 
     connection.send("qr-code-scanned", JSON.stringify({
         id: myId,
-        colour: colour,
+        from: connection.color,
+        to: colour,
         timetostart: timetostart,
         question: question,
     }))
 
     res.status(200).send({
         id: myId,
+        colour: colour,
         timetostart: timetostart,
         question: question
     })
