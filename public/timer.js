@@ -17,16 +17,16 @@ window.onload = () => {
         "green": "#65E67A",
     }
 
-    let color1 = "cc5555";
-    let color2 = "557755";
+    let from = "557755";
+    let to = "cc5555";
 
     if (url.searchParams.has("from")) {
-        color1 = colourMap[url.searchParams.get("from")].slice(1);
-        color2 = color1;
+        from = colourMap[url.searchParams.get("from")].slice(1);
+        to = from;
     }
 
     if (url.searchParams.has("to")) {
-        color2 = colourMap[url.searchParams.get("to")].slice(1);
+        to = colourMap[url.searchParams.get("to")].slice(1);
     }
 
     if (url.searchParams.has("to")) {
@@ -55,7 +55,7 @@ window.onload = () => {
         const remainingTimePrecentage = remainingTime / setTime;
 
         //changes colour between old and new user colour (stays the same if colour doesn't change)
-        element.style["background-color"] = `#${mixHex(color1, color2, remainingTimePrecentage)}`;
+        element.style["background-color"] = `#${mixHex(to, from, remainingTimePrecentage)}`;
 
         // timer
         const secs = Math.min(Math.floor((remainingTime / (1000))), sec).toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
