@@ -27,6 +27,40 @@
           ";
         '';
       };
+
+      packages = rec {
+        default = kleuren-piraat;
+        kleuren-piraat = pkgs.buildNpmPackage {
+          buildInputs =  with pkgs; [ nodejs_22 ];
+          name = "Kleurenpiraat";
+          src = ./.;
+
+
+          npmDepsHash = "sha256-FirF21hxg/NkkaRZQEcomXEpScuJRGyq7bTSULS9YHE=";
+          npmBuild = "npm ci";
+
+          installPhase = ''
+            runHook preInstall
+
+            echo "Copying files"
+            mkdir -p $out/bin
+            cp -r src $out/bin/
+            cp -r node_modules $out/bin/
+            cp package.json $out/bin/
+
+            echo "#!${pkgs.nodejs_22}/bin/node
+            require('./src');
+            " &> $out/bin/Kleurenpiraat
+
+            cd $out/bin
+
+            echo "Changing permissions"
+            chmod +x $out/bin/Kleurenpiraat
+
+            runHook postInstall
+          '';
+        };
+      };
     }
   );
 }
